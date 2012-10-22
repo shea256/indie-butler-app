@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Butler</title>
+  <!-- Bootstrap -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Butler</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><a href="home.html">Activity Stream</a></li>
+            <li class="active"><a href="">Post</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hero-unit">
+      <h1>Post</h1>
+      <legend>A new story</legend>
+
+      <form id="post-message" class="form-horizontal">
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">What's up?</label>
+          <div class="controls">
+            <textarea id="message-content" rows="3" class='input-xlarge'></textarea>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn">Post</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script>
+  //
+  $('#post-message').submit(function() {
+    var activity = {
+      "actor": {
+        "displayName": "Julien",
+        "id": "http://ouvre-boite.com/",
+        "objectType": "person",
+        "url": "http://ouvre-boite.com/"
+      },
+      "content": $('#message-content').val(),
+      "object": {
+        "displayName": $('#message-content').val(),
+        "objectType": "note",
+        "content": $('#message-content').val()
+      },
+      "published": new Date().getTime(),
+      "provider": {
+        "objectType": "service",
+        "displayName": "Butler",
+        "url": "https://github.com/julien51/indie-butler-app"
+      },
+      "title": new Date().getTime(),
+      "verb": "post",
+      "id": ["post", new Date().getTime()].join('-')
+    };
+    chrome.extension.sendRequest(activity);
+    window.location = 'home.html';
+    return false;
+  });
+  </script>
+</body>
+</html>
+

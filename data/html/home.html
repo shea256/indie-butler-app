@@ -1,5 +1,59 @@
-<script>
-    chrome.extension.sendRequest({request: {method: 'get', path: '/stream', headers: {}}}, function(resp){
-        document.write(resp.body);
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Butler</title>
+  <!-- Bootstrap -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Butler</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li class="active"><a href="">Activity Stream</a></li>
+            <li><a href="post.html">Post</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hero-unit">
+      <div class="page-header">
+        <h1>Activity Stream</h1>
+        </div>
+        <div>
+        <table id='entries' class="table .table-striped">
+
+        </table>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script>
+
+
+  chrome.extension.sendRequest({request: {method: 'get', path: '/stream.json', headers: {}}}, function(resp){
+    var list = JSON.parse(resp.body);
+    list.forEach(function(entry) {
+      var e = $('<tr></tr>');
+      var c = $(['<td>', entry.content, '</td>'].join(''));
+      e.append(c);
+      $('#entries').append(e);
     });
-</script>
+  });
+  </script>
+</body>
+</html>
+
