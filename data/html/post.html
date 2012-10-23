@@ -14,11 +14,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Butler</a>
+        <a class="brand" href="home.html">Butler</a>
         <div class="nav-collapse">
           <ul class="nav">
             <li><a href="home.html">Activity Stream</a></li>
-            <li class="active"><a href="">Post</a></li>
+            <li class="active"><a href="post.html">Post</a></li>
+            <li><a href="options.html">Settings</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -69,7 +70,7 @@
         "displayName": "Butler",
         "url": "https://github.com/julien51/indie-butler-app"
       },
-      "title": new Date().getTime(),
+      "title": $('#message-content').val(),
       "verb": "post",
       "id": ["post", new Date().getTime()].join('-')
     };

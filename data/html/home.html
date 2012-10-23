@@ -14,11 +14,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Butler</a>
+        <a class="brand" href="home.html">Butler</a>
         <div class="nav-collapse">
           <ul class="nav">
-            <li class="active"><a href="">Activity Stream</a></li>
+            <li class="active"><a href="home.html">Activity Stream</a></li>
             <li><a href="post.html">Post</a></li>
+            <li><a href="options.html">Settings</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -47,6 +48,7 @@
   chrome.extension.sendRequest({request: {method: 'get', path: '/stream.json', headers: {}}}, function(resp){
     var list = JSON.parse(resp.body);
     list.forEach(function(entry) {
+      console.log(entry)
       var e = $('<tr></tr>');
       var c = $(['<td>', entry.content, '</td>'].join(''));
       e.append(c);

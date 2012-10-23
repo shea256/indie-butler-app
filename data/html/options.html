@@ -1,10 +1,37 @@
-<script src="../../lib/vendor/jquery.js"></script>
-<script src="../../lib/vendor/underscore-min.js"></script>
-<script src="../../lib/vendor/IDBStore.js"></script>
-
-<h1>Options</h1>
-
-<div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Butler</title>
+  <!-- Bootstrap -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="home.html">Butler</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><a href="home.html">Activity Stream</a></li>
+            <li><a href="post.html">Post</a></li>
+            <li class="active"><a href="options.html">Settings</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hero-unit">
+      <div class="page-header">
+        <h1>Options</h1>
+      </div>
+      <div>
+        <div>
 <label>
   <span>Your personal domain</span> <br/>
   <input type="text" id="domain" />
@@ -13,18 +40,27 @@
 
 <ul>
   <li>
-    Create a CNAME of your domain for butler.yourdomain.tld that points to the relay server.
+    Create a CNAME of your domain for local.yourdomain.tld that points to the relay server.
   </li>
   <li>
     Make sure the relay server handles your domain.
   </li>
   <li>
-    Add a rel=me link to any service that supports IndieAuth to the root of your domain.
+    Add a rel=me link to any service that supports rel=me auth to the root of your domain. <i>For now, only Github.com account and Google.com accounts are supported</i>.
   </li>
 </ul>
 
 
-<script>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../lib/vendor/jquery.js"></script>
+  <script src="../../lib/vendor/underscore-min.js"></script>
+  <script src="../../lib/vendor/IDBStore.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script>
+
   $("#relay").val(localStorage.getItem("relay"));
   $("#domain").val(localStorage.getItem("domain"));
 
@@ -36,6 +72,13 @@
     localStorage.setItem("domain",  $("#domain").val());
   });
 
-</script>
+  </script>
+</body>
+</html>
+
+
+
+
+
 
 
