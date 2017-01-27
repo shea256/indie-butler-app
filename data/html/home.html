@@ -40,22 +40,9 @@
     </div>
   </div>
 
-  <script src="http://code.jquery.com/jquery-latest.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script>
-
-
-  chrome.extension.sendRequest({request: {method: 'get', path: '/stream.json', headers: {}}}, function(resp){
-    var list = JSON.parse(resp.body);
-    list.forEach(function(entry) {
-      console.log(entry)
-      var e = $('<tr></tr>');
-      var c = $(['<td>', entry.content, '</td>'].join(''));
-      e.append(c);
-      $('#entries').append(e);
-    });
-  });
-  </script>
+  <script src="../js/jquery.js"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script src="../js/send-request.js"></script>
 </body>
 </html>
 
