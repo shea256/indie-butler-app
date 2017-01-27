@@ -1,6 +1,8 @@
 {
   "name": "indie-buttler",
+  "version": "0.0.0",
   "description": "Indie Buttler App",
+  "manifest_version": 2,
   "permissions": [
     "background",
     "unlimitedStorage",
@@ -8,6 +10,7 @@
     "https://*/"
   ],
   "options_page": "/data/html/options.html",
+  "background": "/data/html/background.html",
   "content_scripts": [
     {
       "js": [
@@ -21,8 +24,6 @@
       "all_frames": true
     }
   ],
-  "background_page": "/data/html/background.html",
-  "version": "0.0.0",
   "app": {
     "launch": {
       "local_path": "/data/html/home.html"
