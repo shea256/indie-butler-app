@@ -46,39 +46,8 @@
     </div>
   </div>
 
-  <script src="http://code.jquery.com/jquery-latest.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script>
-  //
-  $('#post-message').submit(function() {
-    var activity = {
-      "actor": {
-        "displayName": "Julien",
-        "id": "http://ouvre-boite.com/",
-        "objectType": "person",
-        "url": "http://ouvre-boite.com/"
-      },
-      "content": $('#message-content').val(),
-      "object": {
-        "displayName": $('#message-content').val(),
-        "objectType": "note",
-        "content": $('#message-content').val()
-      },
-      "published": new Date().getTime(),
-      "provider": {
-        "objectType": "service",
-        "displayName": "Butler",
-        "url": "https://github.com/julien51/indie-butler-app"
-      },
-      "title": $('#message-content').val(),
-      "verb": "post",
-      "id": ["post", new Date().getTime()].join('-')
-    };
-    chrome.extension.sendRequest(activity);
-    window.location = 'home.html';
-    return false;
-  });
-  </script>
+  <script src="../js/jquery.js"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script src="../js/postStory.js"></script>
 </body>
 </html>
-
