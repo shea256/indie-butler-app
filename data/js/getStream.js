@@ -6,12 +6,16 @@ function getStream() {
   }
 
   chrome.runtime.sendMessage(request, function(response) {
-    console.log(response)
+    console.log(JSON.parse(response.body))
     var list = JSON.parse(response.body);
     list.forEach(function(entry) {
-      console.log(entry)
       var entryDiv = $('<tr></tr>');
+      var nameDiv = $(['<td>', entry.actor.displayName, '</td>'].join(''));
+      var dateString = new Date(entry.published).toString().split(" GMT")[0];
+      var publishedDiv = $(['<td>', dateString, '</td>'].join(''));
       var contentDiv = $(['<td>', entry.content, '</td>'].join(''));
+      entryDiv.append(nameDiv);
+      entryDiv.append(publishedDiv);
       entryDiv.append(contentDiv);
       $('#entries').append(entryDiv);
     });

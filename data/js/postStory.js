@@ -24,12 +24,6 @@ function postStory() {
       "id": ["post", new Date().getTime()].join('-')
     };
 
-    var request = {
-      method: 'get',
-      path: '/stream.json',
-      headers: {}
-    }
-
     chrome.runtime.sendMessage(activity, function(response) {
       console.log(response)
     })
